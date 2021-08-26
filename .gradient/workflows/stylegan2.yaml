@@ -4,7 +4,7 @@ on:
       only: main
 
 jobs:
-  CloneRepo:
+  CloneRepo2:
     resources:
       instance-type: C3
     outputs:
@@ -17,11 +17,11 @@ jobs:
       ref: context.event.github.ref
   StyleGan2:
     resources:
-      instance-type: P4000
+      instance-type: P5000
     needs:
-      - CloneRepo
+      - CloneRepo2
     inputs:
-      stylegan2: CloneRepo.outputs.stylegan2
+      stylegan2: CloneRepo2.outputs.stylegan2
     outputs:
       generatedFaces:
         type: dataset
